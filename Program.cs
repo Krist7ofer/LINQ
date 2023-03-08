@@ -18,6 +18,8 @@ namespace LINQ
             SelectLINQ();
             AllAndAnyLINQ();
             ContainsLINQ();
+            AggregateLINQ();
+            AverageLINQ();
         }
         public static void WhereLINQ()
         {
@@ -155,6 +157,24 @@ namespace LINQ
             bool result = NumberList.numberList.Contains(5);
 
             Console.WriteLine(result);
+        }
+        public static void AggregateLINQ()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            string commaSeparatedPersonNames = PeopleList.peoples
+                .Aggregate<People, string>(
+                "People names: ",
+                (str, x) => str += x.Name + ", "
+                );
+            Console.WriteLine(commaSeparatedPersonNames);
+        }
+        public static void AverageLINQ()
+        {
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            var averageResult = PeopleList.peoples
+                .Average(x => x.Age);
+
+                Console.WriteLine(averageResult);
         }
     }
 }

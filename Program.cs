@@ -51,5 +51,25 @@ namespace LINQ
                 Console.WriteLine(people.Name + " " + people.Age);
             }
         }
+        public static void JoinLINQ()
+        {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.WriteLine("InnerJoin in LINQ");
+
+            var innerJoin = PeopleList.peoples
+                .Join(GenderList.genderList,
+                humans => humans.GenderId,
+                gender => gender.Id,
+                (humans, gender) => new
+                {
+                    Name = humans.Name,
+                    Sex = gender.Sex
+                });
+
+            foreach (var people in innerJoin)
+            {
+                Console.WriteLine(people.Name + " " + people.Sex);
+            }
+        }
     }
 }

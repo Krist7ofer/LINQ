@@ -171,6 +171,7 @@ namespace LINQ
         public static void AverageLINQ()
         {
             Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Average LINQ");
             var averageResult = PeopleList.peoples
                 .Average(x => x.Age);
 
